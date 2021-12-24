@@ -14,13 +14,20 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', HomeController::class);
 
-Route::get('cursos', [CursoController::class,'index'])->name('cursos.index');
+Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index'); //con name() le damos un nombre identificativo a cada ruta
 
-Route::get('cursos/create', [CursoController::class,'create'])->name('cursos.create');
+Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
 
-Route::get('cursos/{id}',[CursoController::class,'show'])->name('cursos.show');
+route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
+
+Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.show');
+
+Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+
+Route::put('cursos/{curso}' , [CursoController::class, 'update'])->name('cursos.update');
 
 /* Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
 

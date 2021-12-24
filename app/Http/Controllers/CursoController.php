@@ -10,7 +10,7 @@ class CursoController extends Controller
 {
     public function index()
     {
-        $cursos = Curso::paginate();    // paginate () en vez de all() q nos muestra todos los registros de una vez    
+        $cursos = Curso::orderBy('id', 'desc')->paginate();    // paginate () para que sea paginado, en vez de all() q nos muestra todos los registros de una vez    
 
         return view('cursos.index', compact('cursos'));
     }
@@ -20,12 +20,44 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    public function show($id)
+    public function store(Request $request)
     {
-        $curso=Curso::find($id);
+        $curso = new Curso();
 
-        compact('curso');//=['curso'=>$curso]
-        
+        $curso->name = $request->name;
+        $curso->descripcion = $request->descripcion;
+        $curso->categoria = $request->categoria;
+
+        $curso->save();
+
+        return redirect()->route('cursos.show', $curso);
+    }
+
+    public function show(Curso $curso)
+    {
+        //$curso = Curso::find($id); //busco con find() el registro con ese id, traemos todos los datos del curso con ese id
+
+        compact('curso'); //=['curso'=>$curso]
+
         return view('cursos.show', compact('curso'));
+    }
+
+    public function edit(Curso $curso)
+    {
+        //$curso = Curso::find($id);
+
+        return view('cursos.edit', compact('curso'));;
+
+    }
+
+    public function update(Curso $curso, Request $request){
+        
+        $curso->name = $request->name;
+        $curso->descripcion = $request->descripcion;
+        $curso->categoria = $request->categoria;
+
+        $curso->save();
+
+        return redirect()->route('cursos.show', $curso);
     }
 }
