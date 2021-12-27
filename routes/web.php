@@ -27,13 +27,4 @@ Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.sho
 
 Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
 
-Route::put('cursos/{curso}' , [CursoController::class, 'update'])->name('cursos.update');
-
-/* Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
-
-    if ($categoria) {
-        return "Bienvenidos al curso $curso, de la categoria $categoria";
-    } else {
-        return "Bienvenidos al curso: $curso";
-    }
-}); */
+Route::put('cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update');
