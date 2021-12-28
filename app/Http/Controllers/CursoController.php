@@ -24,9 +24,9 @@ class CursoController extends Controller
     {
 
         $request->validate([
-            'name'=>'required|max:15',
-            'descripcion'=>'required|min:15',
-            'categoria'=>'required|max:100'
+            'name' => 'required|max:15',
+            'descripcion' => 'required|min:15',
+            'categoria' => 'required|max:100'
         ]);
 
         /* $curso = new Curso();
@@ -35,9 +35,9 @@ class CursoController extends Controller
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
 
-        $curso->save(); */        
+        $curso->save(); */
 
-        $curso = Curso::create($request->all());// se manda todos los campos del formulario, y hace lo mismo que arriba con una sola linea de codigo
+        $curso = Curso::create($request->all()); // se manda todos los campos del formulario, y hace lo mismo que arriba con una sola linea de codigo
 
         return redirect()->route('cursos.show', $curso);
     }
@@ -56,25 +56,33 @@ class CursoController extends Controller
         //$curso = Curso::find($id);
 
         return view('cursos.edit', compact('curso'));;
-
     }
 
-    public function update(Request $request, Curso $curso){
+    public function update(Request $request, Curso $curso)
+    {
 
         $request->validate([
-            'name'=>'required',
-            'descripcion'=>'required',
-            'categoria'=>'required'
-        ]);        
-        
-/*      $curso->name = $request->name;
+            'name' => 'required',
+            'descripcion' => 'required',
+            'categoria' => 'required'
+        ]);
+
+        /*      $curso->name = $request->name;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
 
         $curso->save(); */
 
-        $curso->update($request->all());// con esta sola linea de codigo hacemos lo mismo que arriba
+        $curso->update($request->all()); // con esta sola linea de codigo hacemos lo mismo que arriba
 
         return redirect()->route('cursos.show', $curso);
+    }
+
+    public function destroy(Curso $curso)
+    { //variable curso que va ser un objeto de la clase Curso
+
+        $curso->delete();
+
+        return redirect()->route('cursos.index');
     }
 }
