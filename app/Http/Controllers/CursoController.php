@@ -29,13 +29,15 @@ class CursoController extends Controller
             'categoria'=>'required|max:100'
         ]);
 
-        $curso = new Curso();
+        /* $curso = new Curso();
 
         $curso->name = $request->name;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
 
-        $curso->save();
+        $curso->save(); */        
+
+        $curso = Curso::create($request->all());// se manda todos los campos del formulario, y hace lo mismo que arriba con una sola linea de codigo
 
         return redirect()->route('cursos.show', $curso);
     }
@@ -57,7 +59,7 @@ class CursoController extends Controller
 
     }
 
-    public function update(Curso $curso, Request $request){
+    public function update(Request $request, Curso $curso){
 
         $request->validate([
             'name'=>'required',
@@ -65,11 +67,13 @@ class CursoController extends Controller
             'categoria'=>'required'
         ]);        
         
-        $curso->name = $request->name;
+/*      $curso->name = $request->name;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
 
-        $curso->save();
+        $curso->save(); */
+
+        $curso->update($request->all());// con esta sola linea de codigo hacemos lo mismo que arriba
 
         return redirect()->route('cursos.show', $curso);
     }
