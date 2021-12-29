@@ -78,9 +78,8 @@ class CursoController extends Controller
         return redirect()->route('cursos.show', $curso);
     }
 
-    public function destroy(Curso $curso)
-    { //variable curso que va ser un objeto de la clase Curso
-
+    public function destroy(Curso $curso)//variable curso que va ser un objeto de la clase Curso
+    { 
         $curso->delete();
 
         return redirect()->route('cursos.index');
