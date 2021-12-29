@@ -42,7 +42,7 @@ class CursoController extends Controller
         return redirect()->route('cursos.show', $curso);
     }
 
-    public function show(Curso $curso)
+    public function show(Curso $curso)//recuperamos el id que se manda por la URL y que sea una instancia del modelo Curso
     {
         //$curso = Curso::find($id); //busco con find() el registro con ese id, traemos todos los datos del curso con ese id
 
@@ -67,7 +67,7 @@ class CursoController extends Controller
             'categoria' => 'required'
         ]);
 
-        /*      $curso->name = $request->name;
+        /*$curso->name = $request->name;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
 
