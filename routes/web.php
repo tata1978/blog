@@ -15,7 +15,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', HomeController::class);//muestra la pagina principal del sitio
+Route::get('/', HomeController::class)->name('home');//muestra la pagina principal del sitio
 
 /* Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index'); //con name() le damos un nombre identificativo a cada ruta
 
@@ -43,3 +43,4 @@ Route::resource('cursos', CursoController::class);
 //y no asignatura
 //route::resource('asignaturas', CursoController::class)->parameters(['asignaturas'=>'curso'])->names('cursos');
 
+route::view('nosotros','nosotros')->name('nosotros');//el metodo view lo usamos para mostrar contenidos estaticos
