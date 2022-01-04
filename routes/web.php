@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\CursoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Mail\ContactanosMailable;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +46,7 @@ Route::resource('cursos', CursoController::class);
 //route::resource('asignaturas', CursoController::class)->parameters(['asignaturas'=>'curso'])->names('cursos');
 
 route::view('nosotros','nosotros')->name('nosotros');//el metodo view lo usamos para mostrar contenidos estaticos
+
+route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
+
+route::post('contactanos',[ContactanosController::class, 'store'])->name('contactanos.store');

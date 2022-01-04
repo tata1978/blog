@@ -1,5 +1,5 @@
 <header>
-    <h1>Blog de Cursos</h1>
+    <h1>Coders Free</h1>
     <nav>
         <ul>
             <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
@@ -8,6 +8,9 @@
             </li>
             <li><a href="{{ route('nosotros') }}"
                     class="{{ request()->routeIs('nosotros') ? 'active' : '' }}">Nosotros</a>
+            </li>
+            <li>
+               <a href="{{route('contactanos.index')}}" class="{{ request()->routeIs('contactanos.index') ? 'active' : '' }}">Contáctanos</a>
             </li>
         </ul>
     </nav>
